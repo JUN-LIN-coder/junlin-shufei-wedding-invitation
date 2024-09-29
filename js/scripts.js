@@ -196,3 +196,18 @@ function closeWelcome() {
 function showAlert() {
     alert("不只錢到！人也要到！請帶著紅包到現場！");
 }
+
+let imageIndex = 1;
+const totalImages = 5;
+
+function rotateImages() {
+    const img = document.getElementById('title-carousel');
+    img.src = `images/title_0${imageIndex}.png`;
+
+    imageIndex++;
+    if (imageIndex > totalImages) {
+        imageIndex = 1;
+    }
+}
+
+setInterval(rotateImages, 5000); // 每 5 秒切換一次圖片
