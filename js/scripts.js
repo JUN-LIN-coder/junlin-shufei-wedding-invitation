@@ -190,6 +190,9 @@ function closeWelcome() {
     clearTimeout(welcomeTimeout);  // 清除計時器
     document.getElementById("welcome-screen").style.display = "none";  // 隱藏歡迎畫面
     document.getElementById("main-content").classList.remove("hidden");  // 顯示主內容
+	// 確保用戶交互後播放音樂
+    var audio = document.getElementById('background-music');
+    audio.play();
 }
 
 // 顯示警告訊息
