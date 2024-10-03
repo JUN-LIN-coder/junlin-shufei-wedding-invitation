@@ -188,7 +188,14 @@ function startWelcomeTimer() {
 // 關閉歡迎畫面
 function closeWelcome() {
     clearTimeout(welcomeTimeout);  // 清除計時器
-    document.getElementById("welcome-screen").style.display = "none";  // 隱藏歡迎畫面
+	const welcomeScreen = document.getElementById('welcome-screen');
+	// 加入淡出效果
+	welcomeScreen.classList.add('fade-out');
+	// 等待1秒淡出完成後隱藏元素
+	setTimeout(() => {
+		welcomeScreen.classList.add('hidden');
+	}, 2000); // 2秒後隱藏
+	//document.getElementById("welcome-screen").style.display = "none";  // 隱藏歡迎畫面
     document.getElementById("main-content").classList.remove("hidden");  // 顯示主內容
 	// 確保用戶交互後播放音樂
     var audio = document.getElementById('background-music');

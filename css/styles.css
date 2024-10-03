@@ -222,6 +222,7 @@ h1 {
     z-index: 1000; /* 在其他內容上面 */
     justify-content: center; /* 置中 */
     align-items: center; /* 置中 */
+	transition: opacity 2s ease; /* 添加淡出過渡效果 */
 }
 
 #welcome-screen img {
@@ -229,6 +230,14 @@ h1 {
     max-height: 80%; /* 最大高度 */
     height: auto; /* 自動調整高度 */
     cursor: pointer; /* 鼠標樣式 */
+}
+
+#welcome-screen.fade-out {
+	opacity: 0;
+}
+
+#welcome-screen.hidden {
+	display: none;
 }
 
 /* Title Styles */
