@@ -69,7 +69,6 @@
             </div>
         </div>
         
-        <!-- 婚紗影片 -->
         <button class="accordion" onclick="toggleSection('wedding-photos-vedio')">
             <img src="images/icon-vedio.png" alt="婚紗影片" class="icon"> 婚紗影片
         </button>
@@ -81,6 +80,17 @@
                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                 </iframe>
+            </div>
+        </div>
+
+        <button class="accordion" onclick="toggleSection('wedding-reminder')">
+            <img src="images/icon-alert.png" alt="婚宴提醒" class="icon"> 婚宴提醒
+        </button>
+        <div class="panel" id="wedding-reminder" style="display:none;">
+            <div class="default-padding">
+                <h2 style="color: #d9534f;">🔴紅色炸彈倒數💣</h2>
+                <div id="countdown"></div>
+                <button id="add-to-calendar">📅 加入 Google 行事曆</button>
             </div>
         </div>
 
@@ -100,17 +110,58 @@
             <p><strong style="color: #d9534f;">幸福莊園 House Wedding</strong></p>
             <p><strong>地址：</strong> <span style="font-weight: bold;">台中市大雅區樹德街252號</span></p>
         </div>
-        
-        <button class="accordion" onclick="toggleSection('wedding-reminder')">
-            <img src="images/icon-alert.png" alt="婚宴提醒" class="icon"> 婚宴提醒
-        </button>
-        <div class="panel" id="wedding-reminder" style="display:none;">
-            <div class="default-padding">
-                <h2 style="color: #d9534f;">🔴紅色炸彈倒數💣</h2>
-                <div id="countdown"></div>
-                <button id="add-to-calendar">📅 加入 Google 行事曆</button>
-            </div>
+		
+		<button class="accordion" onclick="toggleSection('wedding-parking')">
+			<img src="images/icon-parking.png" alt="停車位置" class="icon"> 停車位置
+		</button>
+		<div class="panel" id="wedding-parking" style="display:none;">
+			<img src="images/parking.png" alt="停車位置">
+			<ul style="text-align: center">
+				<span style="font-weight: bold; color: #595757;">當天會有工作人員指引！</span>
+			</ul>
         </div>
+		
+		<button class="accordion" onclick="toggleSection('wedding-bus')">
+			<img src="images/icon-bus.png" alt="公車資訊" class="icon"> 公車資訊
+		</button>
+		<div class="panel" id="wedding-bus" style="display:none;">
+			<h3><strong style="color: #d9534f;">高鐵台中站</strong></h3>
+			<ul>
+				<span style="font-weight: bold; color: #595757;">搭156: 高鐵台中站(第17月台) - 頭張(中清路)</span>
+				<br>
+				<span style="color: #757575;">約 20 分</span>
+				<br>
+				<span style="font-weight: bold; color: #595757;">搭525: 頭張(中清路) - 億鴻新村</span>
+				<br>
+				<span style="color: #757575;">約 16 分</span>
+				<br>
+				<span style="font-weight: bold; color: #595757;">步行290公尺 - 幸福莊園</span>
+				<br>
+				<span style="color: #757575;">約 4 分</span>
+			</ul>
+
+			<h3><strong style="color: #d9534f;">臺中火車站</strong></h3>
+			<ul>
+				<span style="font-weight: bold; color: #595757;">搭525: 臺中車站(臺灣大道) - 億鴻新村</span>
+				<br>
+				<span style="color: #757575;">約 53 分</span>
+				<br>
+				<span style="font-weight: bold; color: #595757;">步行290公尺 - 幸福莊園</span>
+				<br>
+				<span style="color: #757575;">約 4 分</span>
+			</ul>
+
+			<h3><strong style="color: #d9534f;">豐原車站</strong></h3>
+			<ul>
+				<span style="font-weight: bold; color: #595757;">搭528: 豐原轉運中心 - 億鴻新村</span>
+				<br>
+				<span style="color: #757575;">約 19 分</span>
+				<br>
+				<span style="font-weight: bold; color: #595757;">步行290公尺 - 幸福莊園</span>
+				<br>
+				<span style="color: #757575;">約 4 分</span>
+			</ul>
+		</div>
         
         <button class="accordion" onclick="toggleSection('wedding-client-photos')">
             <img src="images/icon-client-photos.png" alt="賓客上傳" class="icon"> 賓客上傳
@@ -124,7 +175,7 @@
                 <a href="https://drive.google.com/drive/folders/13MMNgGDCdrACqzRqFCtJLjoI16hPU3hp?usp=sharing" target="_blank" style="color: #d9534f; font-weight: bold;">上傳賓客照片/影片</a>
             </div>
         </div>
-        
+
         <div id="lightbox" class="lightbox">
             <span class="close" onclick="closeLightbox()">&times;</span>
             <div id="slides-container"></div>
