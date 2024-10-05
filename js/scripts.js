@@ -200,6 +200,13 @@ function closeWelcome() {
 	}, 2000); // 2秒後隱藏
 	//document.getElementById("welcome-screen").style.display = "none";  // 隱藏歡迎畫面
     document.getElementById("main-content").classList.remove("hidden");  // 顯示主內容
+	
+	// YouTube iframe父層預設display:none，故改在此加載
+	player = new YT.Player('youtube-player', {
+		events: {
+			'onStateChange': onPlayerStateChange
+		}
+	});
 }
 
 // 顯示警告訊息
@@ -225,25 +232,27 @@ setInterval(rotateImages, 5000); // 每 5 秒切換一次圖片
 // 控制背景播放音樂與YouTube播放時會被暫停情況
 var player;
 var audio = document.getElementById("background-music");
-
-// This function gets called automatically when the YouTube API is ready
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('youtube-player', {
-	events: {
-	  'onStateChange': onPlayerStateChange
-	}
-  });
-}
+var audioPlayTimer = null;
 
 // This function handles the YouTube player state changes
 function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.PLAYING) {
-	// When YouTube video starts playing, pause the audio
-	audio.pause();
-  } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
-	// When video is paused or ends, wait 3 seconds and resume audio
-	setTimeout(function() {
-	  audio.play();
-	}, 3000); // 3000 milliseconds = 3 seconds
-  }
+	if (event.data == YT.PlayerState.PLAYING) {
+		// YouTube影片播放中，關閉背景音樂
+		audio.pause();
+		// YouTube影片播放中，檢查是否有正要啟動播放背景音樂的動作，將其取消
+		if (audioPlayTimer != null) {
+			clearTimeout(audioPlayTimer);
+			audioPlayTimer = null;
+		}
+	} else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+		// YouTube影片暫停或結束，檢查是否有正要執行啟動播放背景音樂的動作，將其取消
+		if (audioPlayTimer != null) {
+			clearTimeout(audioPlayTimer);
+			audioPlayTimer = null;
+		}
+		// YouTube影片暫停或結束，等待3秒後啟動播放背景音樂
+		audioPlayTimer = setTimeout(function() {
+			audio.play();
+		}, 3000); // 3000 milliseconds = 3 seconds
+	}
 }
